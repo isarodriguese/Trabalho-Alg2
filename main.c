@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "heap.h"
 #define MAX 5;
 
 int main () {
-    struct dados *v;
+    struct paciente *v;
     int idade, prio, num, tam, opcao;
 
     printf("Escolha sua interface:\n");
