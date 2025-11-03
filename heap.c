@@ -8,19 +8,16 @@ struct paciente {
 	int prio;
 };
 
-struct paciente *InicHeap(int N)
-{
+struct paciente *InicHeap(int N) {
 	struct paciente *fila;
 
-	fila = malloc(N * sizeof(struct paciente))
-
-	if (fila == NULL) return(NULL);
-
-	return(fila);
+	if (!(fila = malloc(N * sizeof(struct paciente))))
+		return NULL;
+	
+	return fila;
 }
 
-void InsereHeap(int N, struct paciente V[])
-{
+void InsereHeap(int N, struct paciente V[]) {
 	int i, j, aux;
 
 	j = N + 1;
