@@ -4,13 +4,13 @@
 struct paciente;
 
 struct paciente *InicHeap ();
-void InsereHeap ();
-void RemoveHeap ();
+int InsereHeap ();
+int RemoveHeap ();
 void Heapfy ();
 int ChecaHeap ();
 void ImprimeHeap ();
 void HeapSort ();
 void AlteraHeap ();
-//SacodeHeap
+void SacodeHeap ();
 
 #endif
