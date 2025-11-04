@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "functions.h"
-#define MAX 5;
 
 int main () {
     struct paciente *v;
-    int idade, prio, tam, opcao;
+    int prio, tam, opcao;
+    char nome[64];
 
     printf("Escolha sua interface:\n");
     printf("1- Pronto Socorro Heap or Quick\n");
@@ -29,26 +29,26 @@ int main () {
             if (opcao == 2){
                 printf("\n");
                 printf("Digite o nome e a prioridade do paciente a ser inserido:");
-                scanf("%d", &idade);
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                InsereHeap(&v, &tam, idade, prio);
+                InsereHeap(&v, &tam, nome, prio);
             }
 
             if (opcao == 3){
                 printf("\n");
                 printf("Digite o nome e a prioridade do paciente a ser removido:");
-                scanf("%d", &idade);
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                RemoveHeap(&v, &tam, idade, prio);
+                RemoveHeap(&v, &tam, nome, prio);
             }
 
             if (opcao == 4){
                 printf("\n");
                 ImprimeHeap(v, tam);
                 printf("Digite o nome do paciente e a sua nova prioridade:");
-                scanf("%d", &idade);
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                AlteraHeap(&v, &tam, idade, prio);
+                AlteraHeap(&v, &tam, nome, prio);
             }
             
             if (opcao == 5){
