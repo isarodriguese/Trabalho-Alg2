@@ -62,11 +62,13 @@ int main () {
             scanf("%d", &opcao);
         }
 
+        free(v);
+
         return 0;
     }
 
     if (opcao == 2){
-        int *v;
+        int *VetQuick, *VetSelect, *VetHeap;
         int tam = 1024; 
 
         printf("\n");
@@ -78,44 +80,44 @@ int main () {
         srand(0); // usado para testes
         
         // QuickSort
-        if (!(v = malloc(sizeof(int) * (tam + 1)))) {
+        if (!(VetQuick = malloc(sizeof(int) * (tam + 1)))) {
             printf("Não foi possível alocar o vetor.");
             return -1;
         }
 
-        GeraVetor(&v, tam);
-        QuickSort(v, 1, tam);
-        printf("QuickSort: ");
-        ImprimeVetor(v, tam);
-        free(v);
+        GeraVetor(&VetQuick, tam);
+        printf("Vetor gerado: ");
+        ImprimeVetor(VetQuick, tam);
+
+        QuickSort(VetQuick, 1, tam);
+        printf("Vetor ordenado: ");
+        ImprimeVetor(VetQuick, tam);
+        
 
         // SelectSort
-        if (!(v = malloc(sizeof(int) * (tam + 1)))) {
+        if (!(VetSelect = CopiaVetor(&VetQuick, tam))) {
             printf("Não foi possível alocar o vetor.");
-            return -1;
-        }
-
-        GeraVetor(&v, tam);
-        SelectSort(v, 1, tam);
-        printf("SelectSort: ");
-        ImprimeVetor(v, tam);
-        free(v);
-
-        // HeapSort
-        if (!(v = malloc(sizeof(int) * (tam + 1)))) {
-            printf("Não foi possível alocar o vetor.");
+            free(VetQuick);
             return -1;
         }
         
-        GeraVetor(&v, tam);
-        HeapSortV(&v, tam);
-        printf("HeapSort: ");
-        ImprimeVetor(v, tam);
-        free(v);
+        SelectSort(VetSelect, 1, tam);
+
+        // HeapSort
+        if (!(VetHeap = CopiaVetor(&VetQuick, tam))) {
+            printf("Não foi possível alocar o vetor.");
+            free(VetSelect);
+            free(VetQuick);
+            return -1;
+        }
+        
+        HeapSortV(&VetHeap, tam);
+
+        free(VetSelect);
+        free(VetHeap);
+        free(VetQuick);
 
         return 0;
     }
-
-    free(v);
 
 }

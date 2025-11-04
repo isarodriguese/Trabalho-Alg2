@@ -17,6 +17,7 @@ void ImprimeMenu ();
 void QuickSort();
 void SelectSort();
 void GeraVetor();
+int *CopiaVetor();
 void ImprimeVetor();
 void SacodeHeapV();
 void HeapSortV ();

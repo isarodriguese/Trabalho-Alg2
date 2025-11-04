@@ -270,6 +270,18 @@ void GeraVetor(int **v, int tam) {
     }
 }
 
+int *CopiaVetor(int **v, int tam) {
+    int i, *copia;
+
+    if (!(copia = malloc(sizeof(int) * (tam + 1))))
+        return NULL;
+
+    for (i = 1; i <= tam; i++) 
+        copia[i] = (*v)[i];
+
+    return copia;
+}
+
 void ImprimeVetor(int *v, int tam) {
     int i;
     for (i = 1; i < tam; i++)
