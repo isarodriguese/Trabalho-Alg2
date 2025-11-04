@@ -14,4 +14,15 @@ void AlteraHeap ();
 void SacodeHeap ();
 void ImprimeMenu ();
 
+void QuickSort();
+void SelectSort();
+void GeraVetor();
+void ImprimeVetor();
+void SacodeHeapV();
+void HeapSortV ();
+int ChecaHeapV();
+int *InicHeapV();
+int InsereHeapV();
+void HeapfyV();
+
 #endif
