@@ -12,5 +12,6 @@ void ImprimeHeap ();
 void HeapSort ();
 void AlteraHeap ();
 void SacodeHeap ();
+void ImprimeMenu ();
 
 #endif

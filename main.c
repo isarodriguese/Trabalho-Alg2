@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "heap.h"
+#include "functions.h"
 #define MAX 5;
 
 int main () {
     struct paciente *v;
-    int idade, prio, num, tam, opcao;
+    int idade, prio, tam, opcao;
 
     printf("Escolha sua interface:\n");
     printf("1- Pronto Socorro Heap or Quick\n");
@@ -16,7 +16,52 @@ int main () {
 
     if (opcao == 1) {
 
-        v = InicHeap(&tam);
+        printf("Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick! ");
+        ImprimeMenu();
+        scanf("%d", &opcao);
+
+        while (opcao != 0) {
+
+            if (opcao == 1){
+                v = InicHeap(&tam);
+            }
+
+            if (opcao == 2){
+                printf("\n");
+                printf("Digite o nome e a prioridade do paciente a ser inserido:");
+                scanf("%d", &idade);
+                scanf("%d", &prio);
+                InsereHeap(&v, &tam, idade, prio);
+            }
+
+            if (opcao == 3){
+                printf("\n");
+                printf("Digite o nome e a prioridade do paciente a ser removido:");
+                scanf("%d", &idade);
+                scanf("%d", &prio);
+                RemoveHeap(&v, &tam, idade, prio);
+            }
+
+            if (opcao == 4){
+                printf("\n");
+                ImprimeHeap(v, tam);
+                printf("Digite o nome do paciente e a sua nova prioridade:");
+                scanf("%d", &idade);
+                scanf("%d", &prio);
+                AlteraHeap(&v, &tam, idade, prio);
+            }
+            
+            if (opcao == 5){
+                break;
+            }
+
+            printf("\n");
+            ImprimeHeap(v, tam);
+            ImprimeMenu();
+            scanf("%d", &opcao);
+        }
+
+        /*v = InicHeap(&tam);
         printf("insira a idade e a prioridade dos novos pacientes:\n");
         for (int i = 1; i <= 5; i++) 
             if ((scanf("%d", &idade) == 1) && (scanf("%d", &prio) == 1))
@@ -42,7 +87,7 @@ int main () {
 
         printf("Heap ordenada: ");
         HeapSort(&v, tam);
-        ImprimeHeap(v, tam);
+        ImprimeHeap(v, tam);*/
 
         free(v);
 

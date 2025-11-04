@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "heap.h"
+#include "functions.h"
 
 struct paciente {
     int idade; // testando com inteiro, pq nao sei lidar com char
@@ -96,8 +96,10 @@ int RemoveHeap(struct paciente **v, int *tam, int idade, int prio) {
             i++;
     }
 
-    if (!achou)
+    if (!achou){
+        printf("O paciente não se encontra nessa fila de espera!");
         return 0;
+    }
 
     for (; i < *tam; i++) 
         (*v)[i] = (*v)[i + 1]; 
@@ -118,8 +120,9 @@ int RemoveHeap(struct paciente **v, int *tam, int idade, int prio) {
 void ImprimeHeap(struct paciente *v, int tam) {
     int i;
     if (!tam)
-        printf("Heap vazia!\n");
+        printf("Fila de espera vazia!\n");
     else {
+        printf("Fila de espera: ");
         for (i = 1; i < tam; i++) 
             printf("(%d %d) ", v[i].idade, v[i].prio);
         printf("(%d %d)\n", v[i].idade, v[i].prio);
@@ -127,8 +130,23 @@ void ImprimeHeap(struct paciente *v, int tam) {
 }
 
 // altera a prioridade de um paciente
-void AlteraHeap (struct paciente **v, int *tam, int pos, int prio) {
-    (*v)[pos].prio = prio;
+void AlteraHeap (struct paciente **v, int *tam, int idade, int prio) {
+    int achou = 0, i = 1;
+
+    while ((i <= *tam) && (!achou)) {
+        if ((*v)[i].idade == idade)
+        {
+            (*v)[i].prio = prio;
+            achou = 1;
+        }
+
+        else
+            i++;
+    }
+
+    if (!achou){
+        printf("O paciente não se encontra nessa fila de espera!");
+    }
 
 	if (!ChecaHeap(v, tam))
         Heapfy(v, tam);
@@ -163,4 +181,15 @@ void HeapSort (struct paciente **v, int tam) {
 		(*v)[i] = aux;
 		SacodeHeap(v, i-1);
 	}
+}
+
+void ImprimeMenu () {
+    printf("\n");
+    printf("Aperte:\n");
+    printf("1- Para iniciar seu turno\n");
+    printf("2- Para inserir um paciente na lista de espera\n");
+    printf("3- Para remover um paciente da lista de espera\n");
+    printf("4- Para alterar a prioridade de um paciente\n");
+    printf("5- Para visualizar todos os pacientes\n");
+    printf("0- Para finalizar seu turno\n");
 }
