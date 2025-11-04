@@ -121,7 +121,7 @@ int RemoveHeap(struct paciente **v, int *tam, const char *nome, int prio) {
 void ImprimeHeap(struct paciente *v, int tam) {
     int i;
     if (!tam)
-        printf("Fila de espera vazia!\n");
+        printf("A fila de espera está vazia\n");
     else {
         printf("Fila de espera: ");
         for (i = 1; i < tam; i++) 
