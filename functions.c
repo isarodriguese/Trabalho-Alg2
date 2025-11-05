@@ -4,7 +4,7 @@
 #include "functions.h"
 
 struct paciente {
-    int idade; // testando com inteiro, pq nao sei lidar com char
+    char nome[64];
     int prio;
 };
 
@@ -20,7 +20,7 @@ struct paciente *InicHeap(int *tam) {
 
 // aloca memoria para o paciente e o insere conforme a prioridade
 // retorno: 1 se der certo, 0 se der erro
-int InsereHeap(struct paciente **v, int *tam, int idade, int prio) {
+int InsereHeap(struct paciente **v, int *tam, const char *nome, int prio) {
     struct paciente *novo_v;
     struct paciente paciente, chave;
     int i;
@@ -37,7 +37,8 @@ int InsereHeap(struct paciente **v, int *tam, int idade, int prio) {
     *v = novo_v;
 
     // inserindo paciente na heap
-    paciente.idade = idade;
+    strncpy(paciente.nome, nome, sizeof(paciente.nome) - 1);
+    paciente.nome[sizeof(paciente.nome) - 1] = '\0';
     paciente.prio = prio;
     (*tam)++;
     (*v)[*tam] = paciente;
@@ -73,7 +74,7 @@ void Heapfy (struct paciente **v, int *tam) {
     novo_v = InicHeap(&novo_tam);
 
 	for (i = 1; i <= *tam; i++) 
-        InsereHeap(&novo_v, &novo_tam, (*v)[i].idade, (*v)[i].prio);
+        InsereHeap(&novo_v, &novo_tam, (*v)[i].nome, (*v)[i].prio);
 
     free(antigo_v);
     *v = novo_v;
@@ -82,7 +83,7 @@ void Heapfy (struct paciente **v, int *tam) {
 
 // remove um paciente da heap e libera a memoria usada por ele
 // retorno: 1 se der certo, 0 se der erro
-int RemoveHeap(struct paciente **v, int *tam, int idade, int prio) {
+int RemoveHeap(struct paciente **v, int *tam, const char *nome, int prio) {
     struct paciente *novo_v;
     int achou = 0, i = 1;
 
@@ -90,7 +91,7 @@ int RemoveHeap(struct paciente **v, int *tam, int idade, int prio) {
         return 0;
 
     while ((i <= *tam) && !achou) {
-        if (((*v)[i].idade == idade) && ((*v)[i].prio == prio))
+        if ((strcmp((*v)[i].nome, nome) == 0) && ((*v)[i].prio == prio))
             achou = 1;
         else
             i++;
@@ -116,25 +117,25 @@ int RemoveHeap(struct paciente **v, int *tam, int idade, int prio) {
     return 1;
 }
 
-// imprime a heap no formato (idade prio) (idade prio) ...
+// imprime a heap no formato (nome prio) (nome prio) ...
 void ImprimeHeap(struct paciente *v, int tam) {
     int i;
     if (!tam)
-        printf("Fila de espera vazia\n");
+        printf("Fila de espera vazia!\n");
     else {
         printf("Fila de espera: ");
         for (i = 1; i < tam; i++) 
-            printf("(%d %d) ", v[i].idade, v[i].prio);
-        printf("(%d %d)\n", v[i].idade, v[i].prio);
+            printf("(%s %d) ", v[i].nome, v[i].prio);
+        printf("(%s %d)\n", v[i].nome, v[i].prio);
     }
 }
 
 // altera a prioridade de um paciente
-void AlteraHeap (struct paciente **v, int *tam, int idade, int prio) {
+void AlteraHeap (struct paciente **v, int *tam, const char *nome, int prio) {
     int achou = 0, i = 1;
 
     while ((i <= *tam) && (!achou)) {
-        if ((*v)[i].idade == idade)
+        if (strcmp((*v)[i].nome, nome) == 0)
         {
             (*v)[i].prio = prio;
             achou = 1;
@@ -192,7 +193,6 @@ void ImprimeMenu () {
     printf("4- Para alterar a prioridade de um paciente\n");
     printf("5- Para visualizar todos os pacientes\n");
     printf("0- Para finalizar seu turno\n");
-    printf("Insira sua entrada: ");
 }
 
 // ------------------------------------------------------------------- Funcoes da analise de algoritmos ----------------------------------------------------------------
