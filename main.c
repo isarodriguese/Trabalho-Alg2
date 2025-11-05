@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "functions.h"
-#define MAX 5;
 
 int main () {
     struct paciente *v;
-    int idade, prio, tam, opcao;
+    int prio, tam, opcao;
+    char nome[64];
 
     printf("Escolha sua interface:\n");
     printf("1- Pronto Socorro Heap or Quick\n");
     printf("2- Análise dos Algoritmos de Ordenação\n");
 
     scanf("%d", &opcao);
+    printf("\n");
 
 
     if (opcao == 1) {
@@ -23,36 +24,38 @@ int main () {
         while (opcao != 0) {
 
             if (opcao == 1){
+		printf("\n");
+		printf("Seu turno foi iniciado!");
                 v = InicHeap(&tam);
             }
 
             if (opcao == 2){
                 printf("\n");
-                printf("Digite o nome e a prioridade do paciente a ser inserido:");
-                scanf("%d", &idade);
+                printf("Digite o nome e a prioridade do paciente a ser inserido: ");
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                InsereHeap(&v, &tam, idade, prio);
+                InsereHeap(&v, &tam, nome, prio);
             }
 
             if (opcao == 3){
                 printf("\n");
-                printf("Digite o nome e a prioridade do paciente a ser removido:");
-                scanf("%d", &idade);
+                printf("Digite o nome e a prioridade do paciente a ser removido: ");
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                RemoveHeap(&v, &tam, idade, prio);
+                RemoveHeap(&v, &tam, nome, prio);
             }
 
             if (opcao == 4){
                 printf("\n");
                 ImprimeHeap(v, tam);
-                printf("Digite o nome do paciente e a sua nova prioridade:");
-                scanf("%d", &idade);
+                printf("Digite o nome do paciente e a sua nova prioridade: ");
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                AlteraHeap(&v, &tam, idade, prio);
+                AlteraHeap(&v, &tam, nome, prio);
             }
             
             if (opcao == 5){
-                break;
+                printf("\n");
             }
 
             printf("\n");

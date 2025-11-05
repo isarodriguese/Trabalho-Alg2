@@ -5,13 +5,13 @@ LDFLAGS = -Lm
 CC = gcc
 
 # arquivos-objeto
-	objects = main.o heap.o
+	objects = main.o functions.o
 
-main: main.o heap.o
-	$(CC) -o main main.o heap.o $(LDFLAGS)
+main: main.o functions.o
+	$(CC) -o main main.o functions.o $(LDFLAGS)
 
-heap.o: heap.c
-	$(CC) -c $(CFLAGS) heap.c
+functions.o: functions.c
+	$(CC) -c $(CFLAGS) functions.c
 
 main.o: main.c
 	$(CC) -c $(CFLAGS) main.c
