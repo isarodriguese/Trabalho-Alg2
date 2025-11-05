@@ -197,14 +197,17 @@ void ImprimeMenu () {
 
 // ------------------------------------------------------------------- Funcoes da analise de algoritmos ----------------------------------------------------------------
 
-int ParticionaVetor(int *v, int inicio, int fim) {
+int ParticionaVetor(int *v, int inicio, int fim, int *comp, int *trocas) {
     int pivot, pos_pivot = inicio - 1, aux, i;
+
+    (*comp) += 4; // inicio da contagem das comparacoes
 
     // seleciona a mediana como pivot
     if ((v[inicio] >= v[fim] && v[inicio] <= v[(inicio + fim) / 2]) || (v[inicio] <= v[fim] && v[inicio] >= v[(inicio + fim) / 2]))
         pivot = v[inicio];
 
-    else if ((v[(inicio + fim) / 2] >= v[inicio] && v[(inicio + fim) / 2] <= v[fim]) || (v[(inicio + fim) / 2] <= v[inicio] && v[(inicio + fim) / 2] >= v[fim]))
+    (*comp) += 4;
+    if ((v[(inicio + fim) / 2] >= v[inicio] && v[(inicio + fim) / 2] <= v[fim]) || (v[(inicio + fim) / 2] <= v[inicio] && v[(inicio + fim) / 2] >= v[fim])) 
         pivot = v[(inicio + fim) / 2];
 
     else
@@ -213,53 +216,66 @@ int ParticionaVetor(int *v, int inicio, int fim) {
     // encontra a posicao do pivot no vetor
     i = inicio;
     while (i <= fim && v[i] != pivot) {
+        (*comp) += 2;
         i++;
     }
+
+    (*comp) +=2; // comparacoes feitas no fim do loop, no pior caso (seria só uma, se i > fim)
 
     // coloca o pivot no final do vetor (isso simplifica o algoritmo)
     if (i != fim) {
         aux = v[fim];
         v[fim] = v[i];
         v[i] = aux;
+        (*trocas)++;
     }
 
     // particiona
     for (i = inicio; i <= fim; i++) {
+        (*comp) += 2; // uma do for, outra do if
         if (v[i] <= pivot) {
             /* coloca o v[i], menor ou igual ao pivot, antes de onde o pivot vai ficar */
             pos_pivot++;
             aux = v[pos_pivot];
             v[pos_pivot] = v[i];
             v[i] = aux;
+            (*trocas)++;
         }
     }
+
+    (*comp)++; // fim do for
 
     return pos_pivot;
 
 }
 
-void QuickSort(int *v, int inicio, int fim) {
+void QuickSort(int *v, int inicio, int fim, int *comp, int *trocas) {
     int pos_pivot;
+    (*comp)++;
     if (inicio < fim) {
-        pos_pivot = ParticionaVetor(v, inicio, fim);
-        QuickSort(v, inicio, pos_pivot - 1);
-        QuickSort(v, pos_pivot + 1, fim);
+        pos_pivot = ParticionaVetor(v, inicio, fim, comp, trocas);
+        QuickSort(v, inicio, pos_pivot - 1, comp, trocas);
+        QuickSort(v, pos_pivot + 1, fim, comp, trocas);
     }
 }
 
-void SelectSort(int *v, int tam) {
+void SelectSort(int *v, int tam, int *comp, int *trocas) {
     int i, menor, j, aux;
     for (i = 0; i < tam - 1; i++) {
         menor = i;
+        (*comp)++; 
         for (j = menor + 1; j <= tam - 1; j++) {
+            (*comp) += 2; // do for e do if
             if (v[j] < v[menor])
                 menor = j;
-            printf("comparei!");
         }
+        (*comp)++; // fim do segundo for
         aux = v[menor];
         v[menor] = v[i];
         v[i] = aux;
+        (*trocas)++;
     }
+    (*comp)++; // fim do primeiro for
 }
 
 void GeraVetor(int **v, int tam) {
@@ -290,13 +306,15 @@ void ImprimeVetor(int *v, int tam) {
     printf("\n");
 }
 
-int ChecaHeapV(int **v, int *tam) {
+int ChecaHeapV(int **v, int *tam, int *comp) {
     int i;
 
-    for (i = *tam; i > 1; i--) 
+    for (i = *tam; i > 1; i--) {
+        (*comp) += 2;
         if ((*v)[i] > (*v)[i/2]) 
             return 0; 
-
+    }
+    (*comp)++;
     return 1; 
 }
 
@@ -309,7 +327,7 @@ int *InicHeapV(int *tam) {
 }
 
 // insere elemento no heap de inteiros
-int InsereHeapV(int **v, int *tam, int valor) {
+int InsereHeapV(int **v, int *tam, int valor, int *comp, int *trocas) {
     int *novo_v;
     int chave, i;
     
@@ -328,35 +346,42 @@ int InsereHeapV(int **v, int *tam, int valor) {
     i = *tam;
 
     while ((i > 1) && ((*v)[i/2] < (*v)[i])) {
+        (*comp) += 2;
         chave = (*v)[i];
         (*v)[i] = (*v)[i/2];
         (*v)[i/2] = chave;
         i = i/2;
+        (*trocas)++;
     }
+    (*comp) += 2;
 
     return 1;
 }
 
 // transforma um vetor em um heap de inteiros
-void HeapfyV(int **v, int *tam) {
+void HeapfyV(int **v, int *tam, int *comp, int *trocas) {
     int *novo_v, *antigo_v = *v;
     int i, novo_tam;
 
     novo_v = InicHeapV(&novo_tam);
 
-    for (i = 1; i <= *tam; i++) 
-        InsereHeapV(&novo_v, &novo_tam, antigo_v[i]);
-
+    for (i = 1; i <= *tam; i++) {
+        (*comp)++;
+        InsereHeapV(&novo_v, &novo_tam, antigo_v[i], comp, trocas);
+    }
+    (*comp)++;
+    
     free(antigo_v);
     *v = novo_v;
     *tam = novo_tam;
 }
 
-void SacodeHeapV(int **v, int tam) {
+void SacodeHeapV(int **v, int tam, int *comp, int *trocas) {
     int aux;
     int i = 2;
 
     while (i <= tam) {
+        (*comp) += 4; // do while e dos if's
         if (i < tam && (*v)[i] < (*v)[i + 1])
             i++;
         if ((*v)[i/2] >= (*v)[i])
@@ -364,21 +389,25 @@ void SacodeHeapV(int **v, int tam) {
         aux = (*v)[i/2];
         (*v)[i/2] = (*v)[i];
         (*v)[i] = aux;
+        (*trocas)++;
         i *= 2;
     }
 }
 
-void HeapSortV(int **v, int tam) {
+void HeapSortV(int **v, int tam, int *comp, int *trocas) {
     int aux;
     int i;
 
-    if (!ChecaHeapV(v, &tam))
-        HeapfyV(v, &tam);
+    if (!ChecaHeapV(v, &tam, comp))
+        HeapfyV(v, &tam, comp, trocas);
 
     for (i = tam; i > 1; i--) {
+        (*comp)++;
         aux = (*v)[1];
         (*v)[1] = (*v)[i];
         (*v)[i] = aux;
-        SacodeHeapV(v, i-1);
+        (*trocas)++;
+        SacodeHeapV(v, i-1, comp, trocas);
     }
+    (*comp)++;
 }

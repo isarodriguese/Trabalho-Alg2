@@ -67,9 +67,12 @@ int main () {
         return 0;
     }
 
-    if (opcao == 2){
+    if (opcao == 2) {
         int *VetQuick, *VetSelect, *VetHeap;
-        int tam = 1024; 
+        int tam = 1024,
+        NTrocasQuick = 0, NComparacoesQuick = 0,
+        NTrocasSelect = 0, NComparacoesSelect = 0,
+        NTrocasHeap = 0, NComparacoesHeap = 0;
 
         printf("\n");
         printf("Olá! Bem-vindo(a) à análise de algoritmos de ordenação!\n");
@@ -89,7 +92,7 @@ int main () {
         printf("Vetor gerado: ");
         ImprimeVetor(VetQuick, tam);
 
-        QuickSort(VetQuick, 1, tam);
+        QuickSort(VetQuick, 1, tam, &NComparacoesQuick, &NTrocasQuick);
         printf("Vetor ordenado: ");
         ImprimeVetor(VetQuick, tam);
         
@@ -101,7 +104,7 @@ int main () {
             return -1;
         }
         
-        SelectSort(VetSelect, 1, tam);
+        SelectSort(VetSelect, tam, &NComparacoesSelect, &NTrocasSelect);
 
         // HeapSort
         if (!(VetHeap = CopiaVetor(&VetQuick, tam))) {
@@ -111,8 +114,22 @@ int main () {
             return -1;
         }
         
-        HeapSortV(&VetHeap, tam);
+        HeapSortV(&VetHeap, tam, &NComparacoesHeap, &NTrocasHeap);
 
+        printf("Resultados finais:\n");
+        printf("QuickSort:  %d comparações, %d trocas\n", NComparacoesQuick, NTrocasQuick);
+        printf("HeapSort:   %d comparações, %d trocas\n", NComparacoesHeap, NTrocasHeap);
+        printf("SelectSort: %d comparações, %d trocas\n", NComparacoesSelect, NTrocasSelect);
+
+        printf("\n");
+        printf("Análise:\n");
+        if (NComparacoesQuick <= NComparacoesHeap && NComparacoesQuick <= NComparacoesSelect) 
+            printf("Melhor algoritmo: QuickSort\n");
+        else if (NComparacoesHeap <= NComparacoesQuick && NComparacoesHeap <= NComparacoesSelect) 
+            printf("Melhor algoritmo: HeapSort\n");
+        else 
+            printf("Melhor algoritmo: SelectSort\n");
+        
         free(VetSelect);
         free(VetHeap);
         free(VetQuick);
