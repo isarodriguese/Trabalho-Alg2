@@ -5,8 +5,7 @@
 
 int main () {
     struct paciente *v;
-    int prio, tam, opcao;
-    char nome[64];
+    int idade, prio, tam, opcao;
 
     printf("\n");
     printf("Escolha sua interface:\n");
@@ -15,11 +14,11 @@ int main () {
 
     printf("Insira sua entrada: ");
     scanf("%d", &opcao);
-    printf("\n");
 
 
     if (opcao == 1) {
 
+        printf("\n");
         printf("Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick! ");
         ImprimeMenu();
         scanf("%d", &opcao);
@@ -27,40 +26,36 @@ int main () {
         while (opcao != 0) {
 
             if (opcao == 1){
-		printf("\n");
-		printf("Seu turno foi iniciado!");
+                printf("\n");
+                printf("Seu turno foi iniciado!\n");
                 v = InicHeap(&tam);
             }
 
             if (opcao == 2){
                 printf("\n");
                 printf("Digite o nome e a prioridade do paciente a ser inserido: ");
-                scanf("%63s", nome);
+                scanf("%d", &idade);
                 scanf("%d", &prio);
-                InsereHeap(&v, &tam, nome, prio);
+                InsereHeap(&v, &tam, idade, prio);
             }
 
             if (opcao == 3){
                 printf("\n");
                 printf("Digite o nome e a prioridade do paciente a ser removido: ");
-                scanf("%63s", nome);
+                scanf("%d", &idade);
                 scanf("%d", &prio);
-                RemoveHeap(&v, &tam, nome, prio);
+                RemoveHeap(&v, &tam, idade, prio);
             }
 
             if (opcao == 4){
                 printf("\n");
                 ImprimeHeap(v, tam);
                 printf("Digite o nome do paciente e a sua nova prioridade: ");
-                scanf("%63s", nome);
+                scanf("%d", &idade);
                 scanf("%d", &prio);
-                AlteraHeap(&v, &tam, nome, prio);
+                AlteraHeap(&v, &tam, idade, prio);
             }
             
-            if (opcao == 5){
-                printf("\n");
-            }
-
             printf("\n");
             ImprimeHeap(v, tam);
             ImprimeMenu();
@@ -73,7 +68,7 @@ int main () {
     }
 
     if (opcao == 2) {
-        int *VetQuick, *VetSelect, *VetHeap;
+        int *VetOriginal, *VetQuick, *VetSelect, *VetHeap;
         int tam = 1024,
         NTrocasQuick = 0, NComparacoesQuick = 0,
         NTrocasSelect = 0, NComparacoesSelect = 0,
@@ -88,42 +83,45 @@ int main () {
         srand(0); 
         
         // QuickSort
-        if (!(VetQuick = malloc(sizeof(int) * (tam + 1)))) {
+        if (!(VetOriginal = malloc(sizeof(int) * (tam + 1)))) {
             printf("Não foi possível alocar o vetor.");
             return -1;
         }
 
-        GeraVetor(&VetQuick, tam);
+        GeraVetor(&VetOriginal, tam);
         printf("Vetor gerado: ");
-        ImprimeVetor(VetQuick, tam);
+        ImprimeVetor(VetOriginal, tam);
 
+        // QuickSort - usa cópia do original
+        if (!(VetQuick = CopiaVetor(&VetOriginal, tam))) {
+            printf("Não foi possível alocar o vetor.");
+            free(VetOriginal);
+            return -1;
+        }
         QuickSort(VetQuick, 1, tam, &NComparacoesQuick, &NTrocasQuick);
-        printf("Vetor ordenado: ");
-        ImprimeVetor(VetQuick, tam);
-        
 
-        // SelectSort
-        if (!(VetSelect = CopiaVetor(&VetQuick, tam))) {
+        // SelectSort - usa cópia do ORIGINAL, não do QuickSort
+        if (!(VetSelect = CopiaVetor(&VetOriginal, tam))) {
             printf("Não foi possível alocar o vetor.");
             free(VetQuick);
+            free(VetOriginal);
             return -1;
         }
-        
         SelectSort(VetSelect, tam, &NComparacoesSelect, &NTrocasSelect);
 
-        // HeapSort
-        if (!(VetHeap = CopiaVetor(&VetQuick, tam))) {
+        // HeapSort - usa cópia do ORIGINAL
+        if (!(VetHeap = CopiaVetor(&VetOriginal, tam))) {
             printf("Não foi possível alocar o vetor.");
             free(VetSelect);
             free(VetQuick);
+            free(VetOriginal);
             return -1;
         }
-        
         HeapSortV(&VetHeap, tam, &NComparacoesHeap, &NTrocasHeap);
 
         printf("Resultados finais:\n");
-        printf("QuickSort:  %d comparações, %d trocas\n", NComparacoesQuick, NTrocasQuick);
-        printf("HeapSort:   %d comparações, %d trocas\n", NComparacoesHeap, NTrocasHeap);
+        printf("QuickSort: %d comparações, %d trocas\n", NComparacoesQuick, NTrocasQuick);
+        printf("HeapSort: %d comparações, %d trocas\n", NComparacoesHeap, NTrocasHeap);
         printf("SelectSort: %d comparações, %d trocas\n", NComparacoesSelect, NTrocasSelect);
 
         printf("\n");
@@ -134,7 +132,9 @@ int main () {
             printf("Melhor algoritmo: HeapSort\n");
         else 
             printf("Melhor algoritmo: SelectSort\n");
+        printf("\n");
         
+        free(VetOriginal);
         free(VetSelect);
         free(VetHeap);
         free(VetQuick);

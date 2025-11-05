@@ -4,7 +4,7 @@
 #include "functions.h"
 
 struct paciente {
-    char nome[64];
+    int idade; // testando com inteiro, pq nao sei lidar com char
     int prio;
 };
 
@@ -20,7 +20,7 @@ struct paciente *InicHeap(int *tam) {
 
 // aloca memoria para o paciente e o insere conforme a prioridade
 // retorno: 1 se der certo, 0 se der erro
-int InsereHeap(struct paciente **v, int *tam, const char *nome, int prio) {
+int InsereHeap(struct paciente **v, int *tam, int idade, int prio) {
     struct paciente *novo_v;
     struct paciente paciente, chave;
     int i;
@@ -37,8 +37,7 @@ int InsereHeap(struct paciente **v, int *tam, const char *nome, int prio) {
     *v = novo_v;
 
     // inserindo paciente na heap
-    strncpy(paciente.nome, nome, sizeof(paciente.nome) - 1);
-    paciente.nome[sizeof(paciente.nome) - 1] = '\0';
+    paciente.idade = idade;
     paciente.prio = prio;
     (*tam)++;
     (*v)[*tam] = paciente;
@@ -74,7 +73,7 @@ void Heapfy (struct paciente **v, int *tam) {
     novo_v = InicHeap(&novo_tam);
 
 	for (i = 1; i <= *tam; i++) 
-        InsereHeap(&novo_v, &novo_tam, (*v)[i].nome, (*v)[i].prio);
+        InsereHeap(&novo_v, &novo_tam, (*v)[i].idade, (*v)[i].prio);
 
     free(antigo_v);
     *v = novo_v;
@@ -83,7 +82,7 @@ void Heapfy (struct paciente **v, int *tam) {
 
 // remove um paciente da heap e libera a memoria usada por ele
 // retorno: 1 se der certo, 0 se der erro
-int RemoveHeap(struct paciente **v, int *tam, const char *nome, int prio) {
+int RemoveHeap(struct paciente **v, int *tam, int idade, int prio) {
     struct paciente *novo_v;
     int achou = 0, i = 1;
 
@@ -91,7 +90,7 @@ int RemoveHeap(struct paciente **v, int *tam, const char *nome, int prio) {
         return 0;
 
     while ((i <= *tam) && !achou) {
-        if ((strcmp((*v)[i].nome, nome) == 0) && ((*v)[i].prio == prio))
+        if (((*v)[i].idade == idade) && ((*v)[i].prio == prio))
             achou = 1;
         else
             i++;
@@ -117,25 +116,25 @@ int RemoveHeap(struct paciente **v, int *tam, const char *nome, int prio) {
     return 1;
 }
 
-// imprime a heap no formato (nome prio) (nome prio) ...
+// imprime a heap no formato (idade prio) (idade prio) ...
 void ImprimeHeap(struct paciente *v, int tam) {
     int i;
     if (!tam)
-        printf("A fila de espera está vazia\n");
+        printf("Fila de espera vazia\n");
     else {
         printf("Fila de espera: ");
         for (i = 1; i < tam; i++) 
-            printf("(%s %d) ", v[i].nome, v[i].prio);
-        printf("(%s %d)\n", v[i].nome, v[i].prio);
+            printf("(%d %d) ", v[i].idade, v[i].prio);
+        printf("(%d %d)\n", v[i].idade, v[i].prio);
     }
 }
 
 // altera a prioridade de um paciente
-void AlteraHeap (struct paciente **v, int *tam, const char *nome, int prio) {
+void AlteraHeap (struct paciente **v, int *tam, int idade, int prio) {
     int achou = 0, i = 1;
 
     while ((i <= *tam) && (!achou)) {
-        if (strcmp((*v)[i].nome, nome) == 0)
+        if ((*v)[i].idade == idade)
         {
             (*v)[i].prio = prio;
             achou = 1;
@@ -193,6 +192,7 @@ void ImprimeMenu () {
     printf("4- Para alterar a prioridade de um paciente\n");
     printf("5- Para visualizar todos os pacientes\n");
     printf("0- Para finalizar seu turno\n");
+    printf("Insira sua entrada: ");
 }
 
 // ------------------------------------------------------------------- Funcoes da analise de algoritmos ----------------------------------------------------------------
@@ -201,18 +201,19 @@ int ParticionaVetor(int *v, int inicio, int fim, int *comp, int *trocas) {
     int pivot, pos_pivot = inicio - 1, aux, i;
 
     // seleciona a mediana como pivot
-    (*comp) += 4;
-    if ((v[inicio] >= v[fim] && v[inicio] <= v[(inicio + fim) / 2]) || (v[inicio] <= v[fim] && v[inicio] >= v[(inicio + fim) / 2]))
+    if (((*comp) += 2, (v[inicio] >= v[fim] && v[inicio] <= v[(inicio + fim) / 2]) || 
+         (v[inicio] <= v[fim] && v[inicio] >= v[(inicio + fim) / 2]))) {
         pivot = inicio;
-
-    (*comp) += 4;
-    if ((v[(inicio + fim) / 2] >= v[inicio] && v[(inicio + fim) / 2] <= v[fim]) || (v[(inicio + fim) / 2] <= v[inicio] && v[(inicio + fim) / 2] >= v[fim])) 
+    }
+    else if (((*comp) += 2, (v[(inicio + fim) / 2] >= v[inicio] && v[(inicio + fim) / 2] <= v[fim]) || 
+              (v[(inicio + fim) / 2] <= v[inicio] && v[(inicio + fim) / 2] >= v[fim]))) {
         pivot = (inicio + fim) / 2;
-
-    else
+    }
+    else {
         pivot = fim;
+    }
 
-    // coloca o pivot no final do vetor (isso simplifica o algoritmo)
+    // coloca o pivot no final do vetor
     if (pivot != fim) {
         aux = v[fim];
         v[fim] = v[pivot];
@@ -220,28 +221,27 @@ int ParticionaVetor(int *v, int inicio, int fim, int *comp, int *trocas) {
         (*trocas)++;
     }
 
-    // particiona
+    // particiona 
     for (i = inicio; i <= fim; i++) {
         (*comp)++; // do if
-        if (v[i] <= v[pivot]) {
-            /* coloca o v[i], menor ou igual ao pivot, antes de onde o pivot vai ficar */
+
+        if (v[i] <= v[fim]) { 
             pos_pivot++;
-            aux = v[pos_pivot];
-            v[pos_pivot] = v[i];
-            v[i] = aux;
-            (*trocas)++;
+            if (pos_pivot != i) { 
+                aux = v[pos_pivot];
+                v[pos_pivot] = v[i];
+                v[i] = aux;
+                (*trocas)++;
+            }
         }
     }
 
-    /* (*comp)++; // fim do for */
-
     return pos_pivot;
-
 }
 
 void QuickSort(int *v, int inicio, int fim, int *comp, int *trocas) {
     int pos_pivot;
-    (*comp)++;
+    
     if (inicio < fim) {
         pos_pivot = ParticionaVetor(v, inicio, fim, comp, trocas);
         QuickSort(v, inicio, pos_pivot - 1, comp, trocas);
@@ -251,17 +251,22 @@ void QuickSort(int *v, int inicio, int fim, int *comp, int *trocas) {
 
 void SelectSort(int *v, int tam, int *comp, int *trocas) {
     int i, menor, j, aux;
+    
     for (i = 1; i < tam; i++) {
         menor = i;
+        
         for (j = i + 1; j <= tam; j++) {
             (*comp)++; 
             if (v[j] < v[menor])
                 menor = j;
         }
-        aux = v[menor];
-        v[menor] = v[i];
-        v[i] = aux;
-        (*trocas)++;
+        
+        if (menor != i) {
+            aux = v[i];
+            v[i] = v[menor];
+            v[menor] = aux;
+            (*trocas)++;
+        }
     }
 }
 
@@ -295,13 +300,11 @@ void ImprimeVetor(int *v, int tam) {
 
 int ChecaHeapV(int **v, int *tam, int *comp) {
     int i;
-
     for (i = *tam; i > 1; i--) {
-        (*comp) += 2;
+        (*comp)++; 
         if ((*v)[i] > (*v)[i/2]) 
             return 0; 
     }
-    (*comp)++;
     return 1; 
 }
 
@@ -321,26 +324,26 @@ int InsereHeapV(int **v, int *tam, int valor, int *comp, int *trocas) {
     if (!v)
         return 0;
 
-    // aloca mais memoria para inserir o elemento
     if (!(novo_v = realloc(*v, sizeof(int) * (*tam + 2))))
         return 0;
 
     *v = novo_v;
-
-    // inserindo elemento na heap
     (*tam)++;
     (*v)[*tam] = valor;
     i = *tam;
 
-    while ((i > 1) && ((*v)[i/2] < (*v)[i])) {
-        (*comp) += 2;
+    
+    while (i > 1) {
+        (*comp)++; 
+        if ((*v)[i/2] >= (*v)[i])
+            break;
+            
         chave = (*v)[i];
         (*v)[i] = (*v)[i/2];
         (*v)[i/2] = chave;
-        i = i/2;
         (*trocas)++;
+        i = i/2;
     }
-    (*comp) += 2;
 
     return 1;
 }
@@ -353,10 +356,8 @@ void HeapfyV(int **v, int *tam, int *comp, int *trocas) {
     novo_v = InicHeapV(&novo_tam);
 
     for (i = 1; i <= *tam; i++) {
-        (*comp)++;
         InsereHeapV(&novo_v, &novo_tam, antigo_v[i], comp, trocas);
     }
-    (*comp)++;
     
     free(antigo_v);
     *v = novo_v;
@@ -365,36 +366,43 @@ void HeapfyV(int **v, int *tam, int *comp, int *trocas) {
 
 void SacodeHeapV(int **v, int tam, int *comp, int *trocas) {
     int aux;
-    int i = 2;
+    int i = 1;
+    int filho;
 
-    while (i <= tam) {
-        (*comp) += 4; // do while e dos if's
-        if (i < tam && (*v)[i] < (*v)[i + 1])
-            i++;
-        if ((*v)[i/2] >= (*v)[i])
+    while (i * 2 <= tam) {
+        filho = i * 2;
+        
+        
+        (*comp)++; 
+        if (filho < tam && (*v)[filho] < (*v)[filho + 1])
+            filho++;
+            
+        (*comp)++; 
+        if ((*v)[i] >= (*v)[filho])
             break;
-        aux = (*v)[i/2];
-        (*v)[i/2] = (*v)[i];
-        (*v)[i] = aux;
+            
+        aux = (*v)[i];
+        (*v)[i] = (*v)[filho];
+        (*v)[filho] = aux;
         (*trocas)++;
-        i *= 2;
+        
+        i = filho;
     }
 }
 
 void HeapSortV(int **v, int tam, int *comp, int *trocas) {
-    int aux;
-    int i;
+    int i, aux;
 
     if (!ChecaHeapV(v, &tam, comp))
         HeapfyV(v, &tam, comp, trocas);
 
     for (i = tam; i > 1; i--) {
-        (*comp)++;
+        
         aux = (*v)[1];
         (*v)[1] = (*v)[i];
         (*v)[i] = aux;
         (*trocas)++;
+        
         SacodeHeapV(v, i-1, comp, trocas);
     }
-    (*comp)++;
 }
