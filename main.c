@@ -4,7 +4,7 @@
 
 int main () {
     struct paciente *v;
-    int idade, prio, tam, opcao;
+    int prio, tam, opcao;
     char nome[64];
 
     printf("\n");
@@ -14,6 +14,7 @@ int main () {
 
     printf("Insira sua entrada: ");
     scanf("%d", &opcao);
+    printf("\n");
 
 
     if (opcao == 1) {
@@ -25,12 +26,14 @@ int main () {
         while (opcao != 0) {
 
             if (opcao == 1){
+		printf("\n");
+		printf("Seu turno foi iniciado!");
                 v = InicHeap(&tam);
             }
 
             if (opcao == 2){
                 printf("\n");
-                printf("Digite o nome e a prioridade do paciente a ser inserido:");
+                printf("Digite o nome e a prioridade do paciente a ser inserido: ");
                 scanf("%63s", nome);
                 scanf("%d", &prio);
                 InsereHeap(&v, &tam, nome, prio);
@@ -38,7 +41,7 @@ int main () {
 
             if (opcao == 3){
                 printf("\n");
-                printf("Digite o nome e a prioridade do paciente a ser removido:");
+                printf("Digite o nome e a prioridade do paciente a ser removido: ");
                 scanf("%63s", nome);
                 scanf("%d", &prio);
                 RemoveHeap(&v, &tam, nome, prio);
@@ -47,14 +50,14 @@ int main () {
             if (opcao == 4){
                 printf("\n");
                 ImprimeHeap(v, tam);
-                printf("Digite o nome do paciente e a sua nova prioridade:");
+                printf("Digite o nome do paciente e a sua nova prioridade: ");
                 scanf("%63s", nome);
                 scanf("%d", &prio);
                 AlteraHeap(&v, &tam, nome, prio);
             }
             
             if (opcao == 5){
-                break;
+                printf("\n");
             }
 
             printf("\n");
