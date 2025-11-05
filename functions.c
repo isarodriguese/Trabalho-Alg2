@@ -200,40 +200,30 @@ void ImprimeMenu () {
 int ParticionaVetor(int *v, int inicio, int fim, int *comp, int *trocas) {
     int pivot, pos_pivot = inicio - 1, aux, i;
 
-    (*comp) += 4; // inicio da contagem das comparacoes
-
     // seleciona a mediana como pivot
+    (*comp) += 4;
     if ((v[inicio] >= v[fim] && v[inicio] <= v[(inicio + fim) / 2]) || (v[inicio] <= v[fim] && v[inicio] >= v[(inicio + fim) / 2]))
-        pivot = v[inicio];
+        pivot = inicio;
 
     (*comp) += 4;
     if ((v[(inicio + fim) / 2] >= v[inicio] && v[(inicio + fim) / 2] <= v[fim]) || (v[(inicio + fim) / 2] <= v[inicio] && v[(inicio + fim) / 2] >= v[fim])) 
-        pivot = v[(inicio + fim) / 2];
+        pivot = (inicio + fim) / 2;
 
     else
-        pivot = v[fim];
-
-    // encontra a posicao do pivot no vetor
-    i = inicio;
-    while (i <= fim && v[i] != pivot) {
-        (*comp) += 2;
-        i++;
-    }
-
-    (*comp) +=2; // comparacoes feitas no fim do loop, no pior caso (seria só uma, se i > fim)
+        pivot = fim;
 
     // coloca o pivot no final do vetor (isso simplifica o algoritmo)
-    if (i != fim) {
+    if (pivot != fim) {
         aux = v[fim];
-        v[fim] = v[i];
-        v[i] = aux;
+        v[fim] = v[pivot];
+        v[pivot] = aux;
         (*trocas)++;
     }
 
     // particiona
     for (i = inicio; i <= fim; i++) {
-        (*comp) += 2; // uma do for, outra do if
-        if (v[i] <= pivot) {
+        (*comp)++; // do if
+        if (v[i] <= v[pivot]) {
             /* coloca o v[i], menor ou igual ao pivot, antes de onde o pivot vai ficar */
             pos_pivot++;
             aux = v[pos_pivot];
@@ -243,7 +233,7 @@ int ParticionaVetor(int *v, int inicio, int fim, int *comp, int *trocas) {
         }
     }
 
-    (*comp)++; // fim do for
+    /* (*comp)++; // fim do for */
 
     return pos_pivot;
 
@@ -261,27 +251,24 @@ void QuickSort(int *v, int inicio, int fim, int *comp, int *trocas) {
 
 void SelectSort(int *v, int tam, int *comp, int *trocas) {
     int i, menor, j, aux;
-    for (i = 0; i < tam - 1; i++) {
+    for (i = 1; i < tam; i++) {
         menor = i;
-        (*comp)++; 
-        for (j = menor + 1; j <= tam - 1; j++) {
-            (*comp) += 2; // do for e do if
+        for (j = i + 1; j <= tam; j++) {
+            (*comp)++; 
             if (v[j] < v[menor])
                 menor = j;
         }
-        (*comp)++; // fim do segundo for
         aux = v[menor];
         v[menor] = v[i];
         v[i] = aux;
         (*trocas)++;
     }
-    (*comp)++; // fim do primeiro for
 }
 
 void GeraVetor(int **v, int tam) {
     int i, num;
     for (i = 1; i <= tam; i++) {
-        num = rand() % 1025;
+        num = rand() % 20000;
         (*v)[i] = num;
     }
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "functions.h"
 
 int main () {
@@ -84,7 +85,7 @@ int main () {
         printf("Gerando vetor aleatório de %d elementos...\n", tam);
         printf("\n");
 
-        srand(0); // usado para testes
+        srand(0); 
         
         // QuickSort
         if (!(VetQuick = malloc(sizeof(int) * (tam + 1)))) {
