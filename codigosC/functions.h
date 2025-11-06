@@ -19,11 +19,11 @@ void SelectSort();
 void GeraVetor();
 int *CopiaVetor();
 void ImprimeVetor();
-void SacodeHeapV();
-void HeapSortV ();
-int ChecaHeapV();
-int *InicHeapV();
-int InsereHeapV();
-void HeapfyV();
+void SacodeHeapInt();
+void HeapSortInt ();
+int ChecaHeapInt();
+int *InicHeapInt();
+int InsereHeapInt();
+void HeapfyInt();
 
 #endif

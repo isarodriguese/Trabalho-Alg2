@@ -1,10 +1,7 @@
-# Makefile de exemplo (Manual do GNU Make)
-CFLAGS = -Wall -Werror -Wextra -std=c99 -g # flags de compilacao
-LDFLAGS = -Lm
+CFLAGS = -Wall -Werror -Wextra -std=c99 -g
 
 CC = gcc
 
-# arquivos-objeto
 	objects = main.o functions.o
 
 main: main.o functions.o

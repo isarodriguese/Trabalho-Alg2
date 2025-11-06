@@ -26,7 +26,7 @@ main { padding: 16px 0; }
 .conteudo {
 	display: grid;
 	gap: 12px; /*separação entre os cards*/
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /*com isso os cards ficam lado a lado, sem ficam empilhados*/
+	/*grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /*com isso os cards ficam lado a lado, sem ficam empilhados*/
 }
 
 .conteudoCodigos {

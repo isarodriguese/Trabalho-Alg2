@@ -20,35 +20,35 @@ int main () {
 
     if (opcao == 1) {
 
-        printf("Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick! ");
+        printf("Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick!\n");
+        printf("\n");
+        printf("Seu turno foi iniciado");
+        printf("\n");
         ImprimeMenu();
+        v = InicHeap(&tam);
         scanf("%d", &opcao);
 
         while (opcao != 0) {
 
             if (opcao == 1){
-		printf("\n");
-		printf("Seu turno foi iniciado!");
-                v = InicHeap(&tam);
-            }
-
-            if (opcao == 2){
                 printf("\n");
+                ImprimeHeap(v, tam);
                 printf("Digite o nome e a prioridade do paciente a ser inserido: ");
                 scanf("%63s", nome);
                 scanf("%d", &prio);
                 InsereHeap(&v, &tam, nome, prio);
             }
 
-            if (opcao == 3){
+            if (opcao == 2){
                 printf("\n");
+                ImprimeHeap(v, tam);
                 printf("Digite o nome e a prioridade do paciente a ser removido: ");
                 scanf("%63s", nome);
                 scanf("%d", &prio);
                 RemoveHeap(&v, &tam, nome, prio);
             }
 
-            if (opcao == 4){
+            if (opcao == 3){
                 printf("\n");
                 ImprimeHeap(v, tam);
                 printf("Digite o nome do paciente e a sua nova prioridade: ");
@@ -57,8 +57,16 @@ int main () {
                 AlteraHeap(&v, &tam, nome, prio);
             }
             
-            if (opcao == 5){
+            if (opcao == 4){
                 printf("\n");
+                printf("Lista de espera ordenada: ");
+                HeapSort(&v, tam);
+            }
+
+            if (opcao == 5) {
+                printf("\n");
+                printf("Lista de espera em heap: ");
+                Heapfy(&v, &tam);
             }
 
             printf("\n");
@@ -87,7 +95,6 @@ int main () {
 
         srand(0); 
         
-        // QuickSort
         if (!(VetOriginal = malloc(sizeof(int) * (tam + 1)))) {
             printf("Não foi possível alocar o vetor.");
             return -1;
@@ -97,7 +104,7 @@ int main () {
         printf("Vetor gerado: ");
         ImprimeVetor(VetOriginal, tam);
 
-        // QuickSort - usa cópia do original
+        // QuickSort
         if (!(VetQuick = CopiaVetor(&VetOriginal, tam))) {
             printf("Não foi possível alocar o vetor.");
             free(VetOriginal);
@@ -105,7 +112,7 @@ int main () {
         }
         QuickSort(VetQuick, 1, tam, &NComparacoesQuick, &NTrocasQuick);
 
-        // SelectSort - usa cópia do ORIGINAL, não do QuickSort
+        // SelectSort 
         if (!(VetSelect = CopiaVetor(&VetOriginal, tam))) {
             printf("Não foi possível alocar o vetor.");
             free(VetQuick);
@@ -114,7 +121,7 @@ int main () {
         }
         SelectSort(VetSelect, tam, &NComparacoesSelect, &NTrocasSelect);
 
-        // HeapSort - usa cópia do ORIGINAL
+        // HeapSort 
         if (!(VetHeap = CopiaVetor(&VetOriginal, tam))) {
             printf("Não foi possível alocar o vetor.");
             free(VetSelect);
@@ -122,7 +129,7 @@ int main () {
             free(VetOriginal);
             return -1;
         }
-        HeapSortV(&VetHeap, tam, &NComparacoesHeap, &NTrocasHeap);
+        HeapSortInt(&VetHeap, tam, &NComparacoesHeap, &NTrocasHeap);
 
         printf("Resultados finais:\n");
         printf("QuickSort: %d comparações, %d trocas\n", NComparacoesQuick, NTrocasQuick);
@@ -130,7 +137,7 @@ int main () {
         printf("SelectSort: %d comparações, %d trocas\n", NComparacoesSelect, NTrocasSelect);
 
         printf("\n");
-        printf("Análise:\n");
+        printf("Conclusão:\n");
         if (NComparacoesQuick <= NComparacoesHeap && NComparacoesQuick <= NComparacoesSelect) 
             printf("Melhor algoritmo: QuickSort\n");
         else if (NComparacoesHeap <= NComparacoesQuick && NComparacoesHeap <= NComparacoesSelect) 
@@ -146,5 +153,4 @@ int main () {
 
         return 0;
     }
-
 }
