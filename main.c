@@ -5,7 +5,8 @@
 
 int main () {
     struct paciente *v;
-    int idade, prio, tam, opcao;
+    int prio, tam, opcao;
+    char nome[64];
 
     printf("\n");
     printf("Escolha sua interface:\n");
@@ -14,11 +15,11 @@ int main () {
 
     printf("Insira sua entrada: ");
     scanf("%d", &opcao);
+    printf("\n");
 
 
     if (opcao == 1) {
 
-        printf("\n");
         printf("Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick! ");
         ImprimeMenu();
         scanf("%d", &opcao);
@@ -26,36 +27,40 @@ int main () {
         while (opcao != 0) {
 
             if (opcao == 1){
-                printf("\n");
-                printf("Seu turno foi iniciado!\n");
+		printf("\n");
+		printf("Seu turno foi iniciado!");
                 v = InicHeap(&tam);
             }
 
             if (opcao == 2){
                 printf("\n");
                 printf("Digite o nome e a prioridade do paciente a ser inserido: ");
-                scanf("%d", &idade);
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                InsereHeap(&v, &tam, idade, prio);
+                InsereHeap(&v, &tam, nome, prio);
             }
 
             if (opcao == 3){
                 printf("\n");
                 printf("Digite o nome e a prioridade do paciente a ser removido: ");
-                scanf("%d", &idade);
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                RemoveHeap(&v, &tam, idade, prio);
+                RemoveHeap(&v, &tam, nome, prio);
             }
 
             if (opcao == 4){
                 printf("\n");
                 ImprimeHeap(v, tam);
                 printf("Digite o nome do paciente e a sua nova prioridade: ");
-                scanf("%d", &idade);
+                scanf("%63s", nome);
                 scanf("%d", &prio);
-                AlteraHeap(&v, &tam, idade, prio);
+                AlteraHeap(&v, &tam, nome, prio);
             }
             
+            if (opcao == 5){
+                printf("\n");
+            }
+
             printf("\n");
             ImprimeHeap(v, tam);
             ImprimeMenu();
