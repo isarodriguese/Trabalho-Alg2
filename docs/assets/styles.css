@@ -18,7 +18,7 @@ header {
 h1 {
 	margin: 0;
 	font-size: 25px;
-	color: #3D6AE6;
+	color: #448dca;
 }
 
 main { padding: 16px 0; }
@@ -43,8 +43,8 @@ main { padding: 16px 0; }
 
 .card h2 {
 	margin: 4px 0 8px;
-	font-size: 18px;
-	color: #3D6AE6;/* título do card */
+	font-size: 20px;
+	color: #448dca;/* título do card */
 }
 
 .card p {
@@ -55,7 +55,7 @@ main { padding: 16px 0; }
 .card a {
 	display: inline-block;
 	text-decoration: none;
-	color: #3D6AE6;/* links */
+	color: #448dca;/* links */
 }
 
 .card a.botao {
@@ -79,5 +79,32 @@ footer {
 }
 
 .card img {
-	margin-left: 300px;
+	width: 500px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo2 {
+	width: 700px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo3 {
+	width: 200px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo4 {
+	width: 340px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo5 {
+	width: 870px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card h3 {
+	margin: 4px 0 8px;
+	font-size: 18px;
+	color: #448dca;/* título do card */
 }
