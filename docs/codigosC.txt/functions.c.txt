@@ -53,6 +53,9 @@ int InsereHeap(struct paciente **v, int *tam, const char *nome, int prio) {
         i = i/2;
     }
 
+    if (!ChecaHeap(v, tam))
+        Heapfy(v, tam);
+
     return 1;
 }
 
@@ -100,6 +103,7 @@ int RemoveHeap(struct paciente **v, int *tam, const char *nome, int prio) {
     }
 
     if (!achou){
+        printf("\n");
         printf("O paciente não se encontra nessa fila de espera!");
         return 0;
     }
@@ -147,6 +151,7 @@ void AlteraHeap (struct paciente **v, int *tam, const char *nome, int prio) {
     }
 
     if (!achou){
+        printf("\n");
         printf("O paciente não se encontra nessa fila de espera!");
         return;
     }

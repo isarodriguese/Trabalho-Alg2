@@ -93,7 +93,7 @@ int main () {
         printf("Gerando vetor aleatório de %d elementos...\n", tam);
         printf("\n");
 
-        srand(0); 
+        srand(time(NULL)); 
         
         if (!(VetOriginal = malloc(sizeof(int) * (tam + 1)))) {
             printf("Não foi possível alocar o vetor.");
@@ -111,6 +111,9 @@ int main () {
             return -1;
         }
         QuickSort(VetQuick, 1, tam, &NComparacoesQuick, &NTrocasQuick);
+
+        printf("Vetor ordenado: ");
+        ImprimeVetor(VetQuick, tam);
 
         // SelectSort 
         if (!(VetSelect = CopiaVetor(&VetOriginal, tam))) {
