@@ -1,0 +1,142 @@
+==============================================================================================
+Início da execução: programa que implementa operações em heap não vazia
+Por: Isabella dos Santos Stuart (GRR20252459) e Isadora Rodrigues Espinha (GRR20252213)
+==============================================================================================
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+1
+
+A fila de espera está vazia
+Digite o nome e a prioridade do paciente a ser inserido: Isa 7
+
+Fila de espera: (Isa 7)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+1
+
+Fila de espera: (Isa 7)
+Digite o nome e a prioridade do paciente a ser inserido: Ana 5
+
+Fila de espera: (Isa 7) (Ana 5)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+1   
+
+Fila de espera: (Isa 7) (Ana 5)
+Digite o nome e a prioridade do paciente a ser inserido: Pedro 9
+
+Fila de espera: (Pedro 9) (Ana 5) (Isa 7)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+1
+
+Fila de espera: (Pedro 9) (Ana 5) (Isa 7)
+Digite o nome e a prioridade do paciente a ser inserido: Zélia 3
+
+Fila de espera: (Pedro 9) (Ana 5) (Isa 7) (Zélia 3)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+2
+
+Fila de espera: (Pedro 9) (Ana 5) (Isa 7) (Zélia 3)
+Digite o nome e a prioridade do paciente a ser removido: Pedro 9
+
+Fila de espera: (Isa 7) (Ana 5) (Zélia 3)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+3
+
+Fila de espera: (Isa 7) (Ana 5) (Zélia 3)
+Digite o nome do paciente e a sua nova prioridade: Ana 8
+
+Fila de espera: (Ana 8) (Isa 7) (Zélia 3)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+4
+
+Lista de espera ordenada: 
+Fila de espera: (Zélia 3) (Isa 7) (Ana 8)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+5
+
+Lista de espera em heap: 
+Fila de espera: (Ana 8) (Zélia 3) (Isa 7)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+6
+
+Fila de espera: (Ana 8) (Zélia 3) (Isa 7)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+0
