@@ -19,7 +19,7 @@
 				<p></p>
 
 				<h3>Como usar nosso código:</h3>
-				<p>Primeiro, mude para a pasta codigosC e digite make no terminal para compilar o programa</p>
+				<p>Primeiro, mude para a pasta /codigosC e digite make no terminal para compilar o programa</p>
 				<img src="assets/imagens/compilando.png">
 				<h4>Se a opção 1 for a escolhida:</h4>
 				<p>Aparece um menu para a enfermeira escolher o que ela quer fazer</p>
@@ -47,38 +47,38 @@
 				<img class="tipo5" src="assets/imagens/opcao2outra.png" alt="">
 
 				<h3>26/10/2025</h3>
-				<p>Fizemos uma reunião online, na qual implementamos as funções que usaríamos no heap Fila de espera. As funções que já tínhamos visto em aula, foram totalmente baseadas nas que o professor passou.
-					Já as que nunca tínhamos visto (como a ), implementamos da seguinte maneira:
+				<p>Fizemos uma reunião online, na qual implementamos as funções que usaríamos no Heap "Fila de espera". As funções que já tínhamos visto em aula, foram totalmente baseadas nas que o professor passou.
+					Já as que nunca tínhamos visto, implementamos como descrevemos acima.
 				</p>
 				<h4>Observação:</h4> <p>Estávamos usando uma struct paciente diferente apenas para implementar as funções corretamente, a qual era assim:</p>
 				<img class="tipo3" src="assets/imagens/struct-antiga.png" >
-				<p>Em vez de usarmos um campo nome, estávamos usando um campo idade. Isso aconteceu porque ainda não sabíamos mexer muito bem com o tipo char. Então, apenas para garantir que estava tudo certo com as nossas funções, ficamos usando o tipo int.</p>
+				<p>Em vez de usarmos um campo nome, estávamos usando um campo idade. Isso, porque ainda não sabíamos muito bem como manipular o tipo char. Então, no período de testes utilizamos o tipo int.</p>
 				
 				<h3>29/10/2025</h3>
-				<p>Deixamos nosso programa organizado, ainda não estava tudo pronto, mas queríamos organizar bem nossas funções. Então, tivemos a ideia de fazer uma biblioteca de funções, igual aprendemos na matéria de Programação I. Além disso também criamos o makefile.</p>
-				<p>A biblioteca de funções com apenas as funções que já havíamos implementado:</p>
+				<p>Começamos a organizar nossas funções. Nesse dia, tivemos a ideia de fazer uma biblioteca de funções, como aprendemos na matéria de Programação I. Além disso, criamos o makefile.</p>
+				<p>A biblioteca com apenas as funções que já havíamos implementado:</p>
 				<img class="tipo3" src="assets/imagens/functionsH.png">
 				<p>O makefile:</p>
 				<img class="tipo4" src="assets/imagens/makefile.png">
-				<p>A main ainda nem estava feita, mas já deixamos ela no makefile para adiantar o processo. 
-					Nesse dia já tínhamos as funções do heap Fila de espera feitas (porém sem usar char ainda) no functions.c, uma biblioteca de funções no functions.h e um makefile.
+				<p>A main ainda não estava pronta, mas já a incluímos no makefile para adiantar o processo. 
+					Nesse dia, tínhamos somente as funções do Heap "Fila de espera" feitas (ainda com int) no functions.c, uma biblioteca de funções no functions.h e um makefile.
 				</p>
 
 				<h3>03/11/2025</h3>
-				<p>Fizemos a main, e criamos nosso Menu de escolhas. O início do menu vem com uma escolha de qual caminho seguir, se é o do Pronto Socorro ou o da Análise de Algoritmos. Porém nesse dia ainda não tínhamos nenhuma função de ordenação pronta ainda. Então apenas criamos na main tudo que envolvia a escolha da opção 1 (Pronto Socorro), enquanto a escolha da opção 2 (Análise de Algoritmos) encerrava o programa.</p>
-				<p>Aqui tem uma demonstração do menu e o que acontece quando se aperta 1, que era só o que funcionava nesse dia:</p>
+				<p>Fizemos a main, e criamos nosso Menu Inicial. Nele, há como escolher qual caminho seguir: o Pronto Socorro ou a Análise de Algoritmos. Porém, ainda não tínhamos nenhuma função de ordenação pronta. Então, o programa executava a opção 1 (Pronto Socorro), e encerrava, no caso da opção 2 (Análise de Algoritmos).</p>
+				<p>Aqui tem uma demonstração do menu e o que acontecia quando se apertava 1, que era só o que funcionava nesse dia:</p>
 				<img class="tipo4" src="assets/imagens/menu-inicial.png" alt="">
-				<p>Dentro desse segundo menu já estavam funcionando as opções 1, 2, 3, 6 e 0. A 4 não estava funcionando, pois ainda não tínhamos implementado as funções de ordenação e ela precisa do HeapSort. Já a 5 até funcionava, porém não fazia alteração alguma na fila de espera, pois ela usa o Heapfy, o qual não muda nada numa fila que já é um Heap.</p>
+				<p>Dentro do menu de escolha já estavam funcionando as opções 1, 2, 3, 6 e 0. Para a 4, ainda faltava implementar as funções de ordenação, pois ela precisa do HeapSort. Consequentemente, a 5 (Heapfy) ainda não tinha utilidade, uma vez que está presente nas funções InsereHeap, RemoveHeap e AlteraHeap.</p>
 
 				<h3>04/11/2025</h3>
-				<p>Mudamos o campo idade da struct paciente para nome (char). Fizemos todas as alterações nas funções para elas funcionarem com char. As mais diferentes foram essas:</p>
-				<p>Essa é para inserir o nome do paciente no vetor, é bem diferente do que estamos acostumadas, então tivemos que pesquisar</p>
+				<p>Mudamos o campo idade da struct paciente para nome (char). Fizemos todas as alterações nas funções para elas funcionarem com char. As que mais mudaram foram essas:</p>
+				<p>Esta é para inserir o nome do paciente no vetor. Como nunca tínhamos criado funções utilizando char, tivemos que pesquisar e estudar sobre:</p>
 				<img src="assets/imagens/inserindonome.png" alt="">
-				<p>Essa é para comparar dois nomes, também tivemos que pesquisar porque antes achávamos que era só usar == como em números, mas não, tem uma função específica para isso que fica na biblioteca string.h, a qual tivemos que importar</p>
+				<p>Esta é para comparar dois nomes. Também tivemos que pesquisar porque existe uma função específica para isso que fica na biblioteca string.h, a qual tivemos que importar:</p>
 				<img src="assets/imagens/comparandonomes.png" alt="">
-				<p>Nesse dia também implementamos as funções de ordenação e adicionamos suas chamadas na nossa biblioteca.</p>
+				<p>Nesse dia, também implementamos as funções de ordenação e adicionamos suas declarações na nossa biblioteca:</p>
 				<img class="tipo4" src="assets/imagens/functionsAtualizado.png" alt="">
-				<p> Mudamos a main para que ao aparecer o menu inicial e a entrada fosse 2, o programa executasse essa parte de Algoritmos de ordenação. Porém, os vetores gerados ainda eram sempre iguais pois usavam a seed 0. Estávamos usando esse vetor fixo apenas para testes.</p>
+				<p> Além disso, implementamos a execução da opção 2, que trata da análise dos algoritmos de ordenação. Para gerar os valores no período de testes, utilizamos a seed 0 que padroniza a criação do vetor para detectarmos possíveis erros.</p>
 				<img class="tipo5" src="assets/imagens/ordenacao.png" alt="">
 
 				<h3>05/11/2025</h3>
