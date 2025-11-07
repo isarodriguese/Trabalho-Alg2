@@ -1,0 +1,116 @@
+body {
+	margin: 0; /*ta 0 pq deixei grudado em cima, mas talvez centralizado no meio ficaria melhor*/
+	padding: 0 16px 32px; /*0 no primeiro que controla a posição vertical, */
+	font-family: "Nunito";
+	background: #F6FAFF; /*cor fundo*/
+}
+
+header, main, footer {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+header {
+	padding: 16px 0;
+	border-bottom: 1px solid #E3EEFF;/*linha embaixo do titulo*/
+}
+
+h1 {
+	margin: 0;
+	font-size: 25px;
+	color: #448dca;
+}
+
+main { padding: 16px 0; }
+
+.conteudo {
+	display: grid;
+	gap: 12px; /*separação entre os cards*/
+}
+
+.conteudoCodigos {
+	display: grid;
+	gap: 12px; /*separação entre os cards*/
+}
+
+.card {
+	border: 1px solid #E3EEFF;/*cor borda card*/
+	border-radius: 10px;  /*arredondamento da borda*/
+	padding: 14px; /*tamanho card*/
+	background: #FFFFFF;/*cor card*/
+}
+
+.card h2 {
+	margin: 4px 0 8px;
+	font-size: 20px;
+	color: #448dca;/* título do card */
+}
+
+.card p {
+	margin: 6px 0 12px; /*(d em cima  d esquerda  d embaixo */
+	color: #6B7A90;/*descrições*/
+}
+
+.card a {
+	display: inline-block;
+	text-decoration: none;
+	color: #448dca;/* links */
+}
+
+.card a.botao {
+	border: 1px solid #E3EEFF; /*cor da borda*/
+	border-radius: 30px; /*arredondamento da borda*/
+	padding: 6px 10px; /*tamanho (altura largura)*/
+	background: #EEF5FF;/* cor do botão*/
+}
+
+.card a.botao:hover {
+	background: #E8F0FF;/*cor que aparece quando passamos o mouse no botão*/
+}
+
+footer {
+	color: #6B7A90; /*cor texto*/
+	font-size: 16px;
+	text-align: left;
+	padding-top: 16px; /*distancia entre texto e linha*/
+	border-top: 1px solid #E3EEFF; /*cor linha acima do texto*/
+	margin-top: 16px; /*distancia entre linha e caixas*/
+}
+
+.card img {
+	width: 500px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo2 {
+	width: 700px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo3 {
+	width: 200px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo4 {
+	width: 340px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card img.tipo5 {
+	width: 870px; /* Define a largura em pixels */
+	height: auto;
+}
+
+.card h3 {
+	margin: 4px 0 4px;
+	margin-top: 35px;
+	font-size: 20px;
+	color: #448dca;/* título do card */
+}
+
+.card h4 {
+	margin: 4px 0 8px;
+	font-size: 18px;
+	color: #448dca;/* título do card */
+}

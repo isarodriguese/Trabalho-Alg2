@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="docs/assets/styles.css">
+	<title>Relatório</title>
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✿</text></svg>">
+</head>
+
+<body>
+	<header>
+		<h1>Relatório</h1>
+	</header>
+
+        <main>
+			<section class="card">
+				<h2>Como fizemos nosso trabalho:</h2>
+				<p></p>
+
+				<h3>Como usar nosso código:</h3>
+				<p>Primeiro, mude para a pasta codigosC e digite make no terminal para compilar o programa</p>
+				<img src="docs/assets/imagens/compilando.png">
+				<h4>Se a opção 1 for a escolhida:</h4>
+				<p>Aparece um menu para a enfermeira escolher o que ela quer fazer</p>
+				<img src="docs/assets/imagens/menu-inicial.png">
+				<p>Adicionando um paciente na fila de espera ao apertar 1:</p>
+				<img src="docs/assets/imagens/paciente.png">
+				<img src="docs/assets/imagens/inserindopaciente.png">
+				<p>Após adicionar vários pacientes, removendo um da fila de espera ao apertar 2:</p>
+				<img class="tipo2" src="docs/assets/imagens/removendopaciente.png">
+				<img class="tipo2" src="docs/assets/imagens/pacienteremovido.png">
+				<p>Alterando a prioridade de um paciente ao apertar 3:</p>
+				<img class="tipo2" src="docs/assets/imagens/alterando.png">
+				<img class="tipo2" src="docs/assets/imagens/prioridade-alterada.png">
+				<p>Ordenando a fila de espera para ordem crescente ao apertar 4:</p>
+				<img class="tipo2" src="docs/assets/imagens/ordemcrescente.png">
+				<p>Fazendo a fila voltar a ser Heap ao apertar 5:</p>
+				<img class="tipo2" src="docs/assets/imagens/listaheap.png">
+				<p>Mostrando como está a fila de espera ao apertar 6:</p>
+				<img class="tipo2" src="docs/assets/imagens/mostralista.png">
+				<p>Encerrando o turno (o programa) ao apertar 0:</p>
+				<img src="docs/assets/imagens/encerrando.png">
+				<h4>Se a opção 2 for a escolhida:</h4>
+				<img class="tipo5" src="docs/assets/imagens/opcao2.png" alt="">
+				<p>Sempre gera um vetor diferente! Mostrando outro exemplo:</p>
+				<img class="tipo5" src="docs/assets/imagens/opcao2outra.png" alt="">
+
+				<h3>26/10/2025</h3>
+				<p>Fizemos uma reunião online, na qual implementamos as funções que usaríamos no heap Fila de espera. As funções que já tínhamos visto em aula, foram totalmente baseadas nas que o professor passou.
+					Já as que nunca tínhamos visto (como a ), implementamos da seguinte maneira:
+				</p>
+				<h4>Observação:</h4> <p>Estávamos usando uma struct paciente diferente apenas para implementar as funções corretamente, a qual era assim:</p>
+				<img class="tipo3" src="docs/assets/imagens/struct-antiga.png" >
+				<p>Em vez de usarmos um campo nome, estávamos usando um campo idade. Isso aconteceu porque ainda não sabíamos mexer muito bem com o tipo char. Então, apenas para garantir que estava tudo certo com as nossas funções, ficamos usando o tipo int.</p>
+				
+				<h3>29/10/2025</h3>
+				<p>Deixamos nosso programa organizado, ainda não estava tudo pronto, mas queríamos organizar bem nossas funções. Então, tivemos a ideia de fazer uma biblioteca de funções, igual aprendemos na matéria de Programação I. Além disso também criamos o makefile.</p>
+				<p>A biblioteca de funções com apenas as funções que já havíamos implementado:</p>
+				<img class="tipo3" src="docs/assets/imagens/functionsH.png">
+				<p>O makefile:</p>
+				<img class="tipo4" src="docs/assets/imagens/makefile.png">
+				<p>A main ainda nem estava feita, mas já deixamos ela no makefile para adiantar o processo. 
+					Nesse dia já tínhamos as funções do heap Fila de espera feitas (porém sem usar char ainda) no functions.c, uma biblioteca de funções no functions.h e um makefile.
+				</p>
+
+				<h3>03/11/2025</h3>
+				<p>Fizemos a main, e criamos nosso Menu de escolhas. O início do menu vem com uma escolha de qual caminho seguir, se é o do Pronto Socorro ou o da Análise de Algoritmos. Porém nesse dia ainda não tínhamos nenhuma função de ordenação pronta ainda. Então apenas criamos na main tudo que envolvia a escolha da opção 1 (Pronto Socorro), enquanto a escolha da opção 2 (Análise de Algoritmos) encerrava o programa.</p>
+				<p>Aqui tem uma demonstração do menu e o que acontece quando se aperta 1, que era só o que funcionava nesse dia:</p>
+				<img class="tipo4" src="docs/assets/imagens/menu-inicial.png" alt="">
+				<p>Dentro desse segundo menu já estavam funcionando as opções 1, 2, 3, 6 e 0. A 4 não estava funcionando, pois ainda não tínhamos implementado as funções de ordenação e ela precisa do HeapSort. Já a 5 até funcionava, porém não fazia alteração alguma na fila de espera, pois ela usa o Heapfy, o qual não muda nada numa fila que já é um Heap.</p>
+
+				<h3>04/11/2025</h3>
+				<p>Mudamos o campo idade da struct paciente para nome (char). Fizemos todas as alterações nas funções para elas funcionarem com char. As mais diferentes foram essas:</p>
+				<p>Essa é para inserir o nome do paciente no vetor, é bem diferente do que estamos acostumadas, então tivemos que pesquisar</p>
+				<img src="docs/assets/imagens/inserindonome.png" alt="">
+				<p>Essa é para comparar dois nomes, também tivemos que pesquisar porque antes achávamos que era só usar == como em números, mas não, tem uma função específica para isso que fica na biblioteca string.h, a qual tivemos que importar</p>
+				<img src="docs/assets/imagens/comparandonomes.png" alt="">
+				<p>Nesse dia também implementamos as funções de ordenação e adicionamos suas chamadas na nossa biblioteca.</p>
+				<img class="tipo4" src="docs/assets/imagens/functionsAtualizado.png" alt="">
+				<p> Mudamos a main para que ao aparecer o menu inicial e a entrada fosse 2, o programa executasse essa parte de Algoritmos de ordenação. Porém, os vetores gerados ainda eram sempre iguais pois usavam a seed 0. Estávamos usando esse vetor fixo apenas para testes.</p>
+				<img class="tipo5" src="docs/assets/imagens/ordenacao.png" alt="">
+
+				<h3>05/11/2025</h3>
+				<p>Alteramos a seed para, a cada execução, gerar um vetor diferente. Para isso importamos a biblioteca time.h</p>
+				<img class="tipo3" src="docs/assets/imagens/seed.png" alt="">
+				
+				<h3>06/11/2025</h3>
+				<p>Fizemos os testes finais, ajustamos algumas funções e seus nomes e alteramos alguns comentários.</p>
+
+			</section>
+		</main>
+
+		<footer>
+			✿ Feito por: Isabella Stuart (GRR20252459) e Isadora Rodrigues (GRR20252213) ✿
+		</footer>
+	</body>
+</html>

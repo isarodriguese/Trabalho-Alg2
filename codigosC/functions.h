@@ -1,5 +1,5 @@
-#ifndef HEAP_H
-#define HEAP_H
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 struct paciente;
 

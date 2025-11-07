@@ -1,0 +1,29 @@
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+struct paciente;
+
+struct paciente *InicHeap ();
+int InsereHeap ();
+int RemoveHeap ();
+void Heapfy ();
+int ChecaHeap ();
+void ImprimeHeap ();
+void HeapSort ();
+void AlteraHeap ();
+void SacodeHeap ();
+void ImprimeMenu ();
+
+void QuickSort();
+void SelectSort();
+void GeraVetor();
+int *CopiaVetor();
+void ImprimeVetor();
+void SacodeHeapInt();
+void HeapSortInt ();
+int ChecaHeapInt();
+int *InicHeapInt();
+int InsereHeapInt();
+void HeapfyInt();
+
+#endif
