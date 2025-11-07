@@ -112,6 +112,9 @@ int main () {
         }
         QuickSort(VetQuick, 1, tam, &NComparacoesQuick, &NTrocasQuick);
 
+        printf("Vetor ordenado: ");
+        ImprimeVetor(VetQuick, tam);
+
         // SelectSort 
         if (!(VetSelect = CopiaVetor(&VetOriginal, tam))) {
             printf("Não foi possível alocar o vetor.");

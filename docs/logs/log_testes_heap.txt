@@ -86,11 +86,43 @@ Aperte:
 5- Para desfazer a ordenação crescente dos pacientes
 6- Para visualizar todos os pacientes
 0- Para finalizar seu turno
+2
+
+Fila de espera: (Isa 7) (Ana 5) (Zélia 3)
+Digite o nome e a prioridade do paciente a ser removido: Diego 3
+
+O paciente não se encontra nessa fila de espera!
+Fila de espera: (Isa 7) (Ana 5) (Zélia 3)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
 3
 
 Fila de espera: (Isa 7) (Ana 5) (Zélia 3)
 Digite o nome do paciente e a sua nova prioridade: Ana 8
 
+Fila de espera: (Ana 8) (Isa 7) (Zélia 3)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+3
+
+Fila de espera: (Ana 8) (Isa 7) (Zélia 3)
+Digite o nome do paciente e a sua nova prioridade: Pedro 5
+
+O paciente não se encontra nessa fila de espera!
 Fila de espera: (Ana 8) (Isa 7) (Zélia 3)
 
 Aperte:

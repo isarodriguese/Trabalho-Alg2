@@ -39,7 +39,6 @@ A fila de espera está vazia
 Digite o nome e a prioridade do paciente a ser removido: Isa 2
 
 O paciente não se encontra nessa fila de espera!
-
 A fila de espera está vazia
 
 Aperte:
@@ -56,7 +55,6 @@ A fila de espera está vazia
 Digite o nome do paciente e a sua nova prioridade: Isa 2
 
 O paciente não se encontra nessa fila de espera!
-
 A fila de espera está vazia
 
 Aperte:
