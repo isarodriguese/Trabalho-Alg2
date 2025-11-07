@@ -1,7 +1,3 @@
-==============================================================================================
-Início da execução: programa que implementa algoritmos de ordenação em vetor de 1024 elementos
-Por: Isabella dos Santos Stuart (GRR20252459) e Isadora Rodrigues Espinha (GRR20252213)
-==============================================================================================
 
 Escolha sua interface:
 1- Pronto Socorro Heap or Quick

@@ -1,7 +1,3 @@
-==============================================================================================
-Início da execução: programa que implementa operações em heap vazia
-Por: Isabella dos Santos Stuart (GRR20252459) e Isadora Rodrigues Espinha (GRR20252213)
-==============================================================================================
 
 Escolha sua interface:
 1- Pronto Socorro Heap or Quick
