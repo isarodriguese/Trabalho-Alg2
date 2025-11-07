@@ -1,0 +1,95 @@
+==============================================================================================
+Início da execução: programa que implementa operações em heap vazia
+Por: Isabella dos Santos Stuart (GRR20252459) e Isadora Rodrigues Espinha (GRR20252213)
+==============================================================================================
+
+Escolha sua interface:
+1- Pronto Socorro Heap or Quick
+2- Análise dos Algoritmos de Ordenação
+Insira sua entrada: 1
+
+Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick!
+
+Seu turno foi iniciado
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+5
+
+Lista de espera em heap: 
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+2
+
+A fila de espera está vazia
+Digite o nome e a prioridade do paciente a ser removido: Isa 2
+
+O paciente não se encontra nessa fila de espera!
+
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+3
+
+A fila de espera está vazia
+Digite o nome do paciente e a sua nova prioridade: Isa 2
+
+O paciente não se encontra nessa fila de espera!
+
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+4
+
+Lista de espera ordenada: 
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+6
+
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+0
