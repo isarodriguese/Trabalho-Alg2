@@ -1,0 +1,206 @@
+=======================================================================================
+Início da execução: análise do valgrind sobre programa que implementa operações em heap
+Por: Isabella dos Santos Stuart (GRR20252459) e Isadora Rodrigues Espinha (GRR20252213)
+=======================================================================================
+
+==17456== Memcheck, a memory error detector
+==17456== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17456== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==17456== Command: ./main
+==17456== 
+
+Escolha sua interface:
+1- Pronto Socorro Heap or Quick
+2- Análise dos Algoritmos de Ordenação
+Insira sua entrada: 1
+
+Olá! Bem-vindo(a) ao Pronto Socorro Heap or Quick!
+
+Seu turno foi iniciado
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+2
+
+A fila de espera está vazia
+Digite o nome e a prioridade do paciente a ser removido: Isa 2
+
+O paciente não se encontra nessa fila de espera!
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+3
+
+A fila de espera está vazia
+Digite o nome do paciente e a sua nova prioridade: Isa 2
+
+O paciente não se encontra nessa fila de espera!
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+4
+
+Lista de espera ordenada: 
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+5
+
+Lista de espera em heap: 
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+6
+
+A fila de espera está vazia
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+1
+
+A fila de espera está vazia
+Digite o nome e a prioridade do paciente a ser inserido: Isa 2
+
+Fila de espera: (Isa 2)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+3
+
+Fila de espera: (Isa 2)
+Digite o nome do paciente e a sua nova prioridade: Isa 5
+
+Fila de espera: (Isa 5)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+1
+
+Fila de espera: (Isa 5)
+Digite o nome e a prioridade do paciente a ser inserido: Ana 6
+
+Fila de espera: (Ana 6) (Isa 5)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+4
+
+Lista de espera ordenada: 
+Fila de espera: (Isa 5) (Ana 6)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+5
+
+Lista de espera em heap: 
+Fila de espera: (Ana 6) (Isa 5)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+6
+
+Fila de espera: (Ana 6) (Isa 5)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+2
+
+Fila de espera: (Ana 6) (Isa 5)
+Digite o nome e a prioridade do paciente a ser removido: Ana 6
+
+Fila de espera: (Isa 5)
+
+Aperte:
+1- Para inserir um paciente na lista de espera
+2- Para remover um paciente da lista de espera
+3- Para alterar a prioridade de um paciente
+4- Para organizar os pacientes em ordem crescente de prioridade
+5- Para desfazer a ordenação crescente dos pacientes
+6- Para visualizar todos os pacientes
+0- Para finalizar seu turno
+0
+==17456== 
+==17456== HEAP SUMMARY:
+==17456==     in use at exit: 0 bytes in 0 blocks
+==17456==   total heap usage: 7 allocs, 7 frees, 2,864 bytes allocated
+==17456== 
+==17456== All heap blocks were freed -- no leaks are possible
+==17456== 
+==17456== For lists of detected and suppressed errors, rerun with: -s
+==17456== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

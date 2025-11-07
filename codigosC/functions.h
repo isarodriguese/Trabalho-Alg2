@@ -13,7 +13,6 @@ void HeapSort ();
 void AlteraHeap ();
 void SacodeHeap ();
 void ImprimeMenu ();
-
 void QuickSort();
 void SelectSort();
 void GeraVetor();
