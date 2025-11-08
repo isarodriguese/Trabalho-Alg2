@@ -16,50 +16,50 @@
         <main>
 			<section class="card">
 				<h2>Como fizemos nosso trabalho:</h2>
-				<p>Para implementar o Heap, optamos por utilizar um vetor de structs, compostas pelo nome e pela prioridade de cada paciente. Na disciplina de Programação I, aprendemos que, para um vetor muito grande, é uma boa prática evitar a alocação estática. Por isso, optamos por usar a dinâmica em todo o nosso trabalho. Para isso, utilizamos os comandos malloc e realloc.
-				<br>
-				Um outro motivo para essa escolha seria proporcionar à enfermeira uma maior liberdade no uso de seu sistema, uma vez que não é necessário definir um tamanho limite em específico para o vetor.
-				<br> 
-				Além disso, decidimos implementar um MaxHeap, visto que estudamos em Algoritmos II que ele é a estrutura padrão para um Heap. À medida que os pacientes são inseridos, a estrutura da fila de espera se estabelece automaticamente como um Heap. Entretanto, a enfermeira sempre tem a opção de ordenar de modo crescente os pacientes pela prioridade deles, utilizando a função HeapSort.
-				<br>
+				<p class="topicos">Para implementar o Heap, optamos por utilizar um vetor de structs, compostas pelo nome e pela prioridade de cada paciente. Na disciplina de Programação I, aprendemos que, para um vetor muito grande, é uma boa prática evitar a alocação estática. Por isso, optamos por usar a dinâmica em todo o nosso trabalho. Para isso, utilizamos os comandos malloc e realloc.
+				</p>
+				<p class="topicos">Um outro motivo para essa escolha seria proporcionar à enfermeira uma maior liberdade no uso de seu sistema, uma vez que não é necessário definir um tamanho limite em específico para o vetor.
+				</p> 
+				<p class="topicos">Além disso, decidimos implementar um MaxHeap, visto que estudamos em Algoritmos II que ele é a estrutura padrão para um Heap. À medida que os pacientes são inseridos, a estrutura da fila de espera se estabelece automaticamente como um Heap. Entretanto, a enfermeira sempre tem a opção de ordenar de modo crescente os pacientes pela prioridade deles, utilizando a função HeapSort.
+				</p>
 				<h3>Sobre as funções:</h3>
-				<br>
+				<p>
 				InicHeap: faz o ponteiro para o vetor apontar para NULL e define seu tamanho como zero. 
-				<br>
+				</p><p class="topicos">
 				InsereHeap: usa o realloc para ajustar a quantidade de memória utilizada pelo vetor e, em seguida, insere o paciente no vetor. Ao final, verifica se o vetor é um Heap e, caso não seja, aciona a função Heapfy.
-				<br>
+				</p><p class="topicos">
 				ChecaHeap: percorre o vetor, verificando se é um Heap. Retorna 1 se ele for e 0 se não for.
-				<br>
+				</p><p class="topicos">
 				Heapfy: converte um vetor em MaxHeap.
-				<br>
+				</p><p class="topicos">
 				RemoveHeap: optamos por implementar uma função que permite remover qualquer paciente da fila de espera. Para isso, ela percorre o vetor, comparando os dados de cada struct, até encontrar o paciente procurado pela enfermeira. Para comparar o nome, usamos uma função de comparação (<em>strcmp()</em>) da biblioteca string.h. Caso o paciente não esteja na fila, ela retorna 0 (erro). Se ele estiver, ela utiliza a função realloc, já ajustando o novo tamanho do vetor. Ao final, se o vetor resultante não for um Heap, ela aciona o Heapfy.
-				<br>
+				</p><p class="topicos">
 				ImprimeHeap: verifica se a fila possui pacientes, se sim, imprime cada um deles seguindo o padrão (nome prioridade). Senão, imprime uma mensagem informando que a fila está vazia.
-				<br>
+				</p><p class="topicos">
 				AlteraHeap: de forma semelhante à função RemoveHeap, percorre o vetor, até encontrar o paciente procurado pela enfermeira. Se ele estiver na fila, altera a prioridade dele, para o novo valor, também informado pela enfermeira. Se não, ela imprime uma mensagem informando a ausência do paciente. Ao final, se o vetor resultante não for um Heap, ela aciona o Heapfy.
-				<br>
+				</p><p class="topicos">
 				SacodeHeap: utilizada exclusivamente no HeapSort, como foi estudado em aula. Percorre um dos nós da Heap, corrigindo a propriedade da estrutura de dados, caso seja necessário.
-				<br>
+				</p><p class="topicos">
 				HeapSort: ordena um Heap, inserindo o primeiro elemento no final da fila e executando a função SacodeHeap.
-				<br>
+				</p><p class="topicos">
 				ImprimeMenu: imprime as opções de escolha disponíveis para a enfermeira, no Pronto Socorro.
-				<br>
+				</p><p class="topicos">
 				ParticionaVetor: utilizada exclusivamente no QuickSort. Seleciona um pivô que, nesse caso, é a mediana entre o primeiro, o último e o elemento do meio, de modo a tentar evitar o pior caso do algoritmo (que possui custo quadrático quando as partes geradas são muito desiguais entre si, ou seja, pivô próximo aos cantos do vetor). Retorna a posição correta do pivô.
-				<br>
+				</p><p class="topicos">
 				QuickSort: aciona as funções ParticionaVetor e o próprio QuickSort, de forma recursiva, enquanto o valor da posição do início do vetor for menor que o da posição do fim.
-				<br>
+				</p><p class="topicos">
 				SelectSort: implementado da mesma forma que vimos em aula. Percorre o vetor, substituindo os valores nas respectivas posições corretas.
-				<br>
+				</p><p class="topicos">
 				GeraVetor: cria um vetor de inteiros contendo 1024 elementos aleatórios, que podem chegar até 20000.
-				<br>
+				</p><p class="topicos">
 				CopiaVetor: gera cópias do vetor criado por GeraVetor, para ser possível a análise dos algoritmos de ordenação, com base em um mesmo vetor.
-				<br>
+				</p><p class="topicos">
 				ImprimeVetor: imprime o vetor de inteiros.
-				<br>
+				</p><p class="topicos">
 				ChecaHeapInt, InicHeapInt, InsereHeapInt, HeapfyInt, SacodeHeapInt, HeapSortInt: implementadas da mesma forma como descrito acima, porém para um vetor de inteiros, em vez de structs.
-				<br>
+				</p><p class="topicos">
 				Ao final do trabalho, imprimimos os resultados das quantidades de comparações e trocas de cada algoritmo (QuickSort, SelectSort e HeapSort), e concluímos que o melhor algoritmo de ordenação é o QuickSort, porque é o que executa o menor número de comparações e trocas, especialmente com a implementação da mediana como pivô, que contorna o pior caso, como observado anteriormente. 
-				<br>
+				</p><p class="topicos">
 				No final de ambas as opções (Pronto Socorro e Análise de Algoritmos), executamos a função <em>free()</em>, para liberar toda a memória alocada para os vetores utilizados. Ademais, colocamos, em todo o código, verificações de que as alocações ocorreram como o esperado. No caso de não ser possível alocar um vetor, o programa retorna -1 (erro) e encerra a execução.
 				</p>
 

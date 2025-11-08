@@ -51,6 +51,10 @@ main { padding: 16px 0; }
 	color: #6B7A90;/*descrições*/
 }
 
+.card p.topicos {
+	margin-top: 10px;
+}
+
 .card a {
 	display: inline-block;
 	text-decoration: none;
